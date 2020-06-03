@@ -1,4 +1,4 @@
-☆会員情報
+☆会員情報テンプレ
 ID：
 パスワード：
 会員名：
@@ -11,7 +11,7 @@ ID：
 在庫：
 
 
-☆予約情報
+☆予約情報テンプレ
 予約番号：
 会員名：
 チケット名：
@@ -22,12 +22,12 @@ ID：
 具体的なデータ
 
 会員１
-ID：t-tanaka@yafoo.co.jp
+ID：t-tanaka
 パスワード：dhu37qh3f7wa
 会員名：田中太郎
 
 会員２
-ID：r-yoshida@yafoo.co.jp
+ID：r-yoshida
 パスワード：noijnpa8yvaw
 会員名：吉田流星
 
