@@ -1,6 +1,8 @@
-package 設計;
+package チケット予約システム;
 
-import 分析.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Ticket {
 
@@ -15,27 +17,40 @@ public class Ticket {
 	private int stock;
 
 	public Ticket(int ticketNo, String ticketName, int price, Date eventDate, int stock) {
-
+		this.ticketNo = ticketNo;
+		this.ticketName = ticketName;
+		this.price = price;
+		this.eventDate = eventDate;
+		this.stock = stock;
 	}
 
-	public void addStock(int canseledAmount) {
-
+	public void addStock(int canceledAmount) {
+		this.stock += canceledAmount;
 	}
 
 	public void reduceStock(int reservationAmount) {
-
+		this.stock -= reservationAmount;
 	}
 
 	public int getStock() {
-		return 0;
+		return this.stock;
 	}
 
 	public String toString() {
-		return null;
+		String str;
+		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        
+		String formattedDate = dateFormat.format(this.eventDate);
+		
+		str = "チケット番号 : " + this.ticketNo + "\n" + "チケット名 : " + this.ticketName + "\n" + 
+				"価格 : " + this.price + "\n" + "開催日 : " + formattedDate + "\n" + 
+				"在庫数 : " + this.stock;
+
+		return str;
 	}
 
 	public String getName() {
-		return null;
+		return this.ticketName;
 	}
 
 }

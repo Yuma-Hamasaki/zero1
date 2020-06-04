@@ -1,4 +1,4 @@
-package 設計;
+package チケット予約システム;
 
 public class Member {
 
@@ -9,19 +9,22 @@ public class Member {
 	private String name;
 
 	public Member(String memberID, String password, String name) {
-
+		this.id = memberID;
+		this.password = password;
+		this.name = name;
 	}
 
 	public String getId() {
-		return null;
+		return this.id;
+		
 	}
 
 	public String getPassword() {
-		return null;
+		return this.password;
 	}
 
 	public String getName() {
-		return null;
+		return name;
 	}
 
 }

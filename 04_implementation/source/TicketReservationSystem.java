@@ -1,16 +1,16 @@
-package 設計;
+package チケット予約システム;
 
 public class TicketReservationSystem {
 
 	private CUI cui;
 
-	private String.TicketList ticketList;
+	private TicketList ticketList;
 
 	private MemberList memberList;
 
 	private ReservationList reservationList;
 
-	public TicketReservationSystem(String.TicketList ticketList, MemberList memberList, ReservationList reservationList) {
+	public TicketReservationSystem(TicketList ticketList, MemberList memberList, ReservationList reservationList) {
 
 	}
 
