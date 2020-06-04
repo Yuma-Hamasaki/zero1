@@ -2,6 +2,7 @@ package チケット予約システム;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Ticket {
@@ -22,6 +23,10 @@ public class Ticket {
 		this.price = price;
 		this.eventDate = eventDate;
 		this.stock = stock;
+	}
+	
+	public int getticketNo() {
+		return this.ticketNo;
 	}
 
 	public void addStock(int canceledAmount) {
