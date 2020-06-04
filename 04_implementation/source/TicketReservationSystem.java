@@ -127,8 +127,8 @@ public class TicketReservationSystem {
 					break;
 				}
 			}
-			
-			for(Reservation res : reservationList.getReservationList()) {
+			//ここまでは動きそう.番号一致していないが必ず出るようになってる
+			for(Reservation res : this.reservationList.getReservationList()) {
 				int resNum = res.getReservationNo();
 				
 				if(inputNumber == resNum) {
@@ -137,7 +137,9 @@ public class TicketReservationSystem {
 					break;
 				}
 			}
-			cui.showMessage("予約番号が一致していません。再入力してください");
+			if(reservationFindFlag == true) {
+				cui.showMessage("予約番号が一致していません。再入力してください");
+			}
 		}
 		
 		if(cui.confirm("このまま予約をキャンセルしますか？")) {
@@ -154,7 +156,6 @@ public class TicketReservationSystem {
 			currentMember = login();
 			while(currentMember != null) {
 				SystemFunction func = cui.selectFunction();
-				System.out.println(func == SystemFunction.Logout);
 				if(func == SystemFunction.Logout) {
 					logout();
 					break;
