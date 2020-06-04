@@ -31,7 +31,7 @@ public class Reservation {
 	}
 
 	public boolean checkMatchID(String memberID) {
-		if(this.member.getId() == memberID) {
+		if(memberID.equals(this.member.getId())) {
 			return true;
 		}
 		return false;

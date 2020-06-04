@@ -40,7 +40,7 @@ public class ReservationList {
 	public Reservation[] getAllReservation(String memberID) {
 		ArrayList<Reservation> rtnList = new ArrayList<Reservation>(); //リターン用リスト
 		for(Reservation res : reservations) {
-			if(res.getMember().getId() == memberID)
+			if(memberID.equals(res.getMember().getId() ))
 				rtnList.add(res);
 		}
 		Reservation[] resArray = rtnList.toArray(new Reservation[rtnList.size()]);
