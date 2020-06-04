@@ -35,8 +35,12 @@ public class Reservation {
 		}
 		return false;
 	}
+	
+	public Member getMember() {
+		return this.member;
+	}
 
-	public int getReservationNumber() {
+	public int getReservationNo() {
 		return this.reservationNo;
 	}
 	
