@@ -42,8 +42,8 @@ public class TicketList {
 		}
 	}
 	
-	public List<Ticket> getAllTicket() {
-		return ticketList;
+	public Ticket[] getAllTicket() {
+		return ticketList.toArray(new Ticket[ticketList.size()]);
 	}
 
 }
