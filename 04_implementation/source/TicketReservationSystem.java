@@ -9,6 +9,8 @@ public class TicketReservationSystem {
 	private MemberList memberList;
 
 	private ReservationList reservationList;
+	
+	private Member currentMember;
 
 	public TicketReservationSystem(TicketList ticketList, MemberList memberList, ReservationList reservationList) {
 
@@ -35,7 +37,7 @@ public class TicketReservationSystem {
 	}
 
 	public void cancelReservation() {
-
+		reservationList.getAllReservation(currentMember.getId());
 	}
 
 	public void start() {
