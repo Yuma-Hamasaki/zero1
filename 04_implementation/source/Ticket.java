@@ -1,5 +1,7 @@
 package チケット予約システム;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Ticket {
@@ -36,9 +38,13 @@ public class Ticket {
 
 	public String toString() {
 		String str;
-		str = this.ticketNo + "¥n" +  this.ticketName + "¥n" + 
-				this.price + "¥n" + this.eventDate + "¥n" + 
-				this.stock;
+		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        
+		String formattedDate = dateFormat.format(this.eventDate);
+		
+		str = "チケット番号 : " + this.ticketNo + "\n" + "チケット名 : " + this.ticketName + "\n" + 
+				"価格 : " + this.price + "\n" + "開催日 : " + formattedDate + "\n" + 
+				"在庫数 : " + this.stock;
 
 		return str;
 	}
