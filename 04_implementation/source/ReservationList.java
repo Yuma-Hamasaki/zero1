@@ -42,5 +42,8 @@ public class ReservationList {
 		return  resArray;
 		
 	}
+	public ArrayList<Reservation> getReservationList(){
+		return this.reservations;
+	}
 
 }

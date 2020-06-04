@@ -1,5 +1,7 @@
 package チケット予約システム;
 
+import java.util.Date;
+
 public class TicketReservationSystem {
 
 	private CUI cui;
@@ -13,12 +15,15 @@ public class TicketReservationSystem {
 	private Member currentMember;
 
 	public TicketReservationSystem(TicketList ticketList, MemberList memberList, ReservationList reservationList) {
-
+		this.ticketList = ticketList;
+		this.memberList = memberList;
+		this.reservationList = reservationList;
+		cui = new CUI();
 	}
 
 	public Member login() {
 		Member user = null;
-		while(user != null) {
+		while(user == null) {
 			String ID = cui.inputID();
 			String password = cui.inputPW();
 			user = memberList.searchMember(ID,password);
@@ -34,12 +39,54 @@ public class TicketReservationSystem {
 	}
 
 	public void makeReservation() {
+		this.viewTicket();
+		Date date = new Date();
+		boolean judge = true;
+		Ticket ticket = null;
+		int ticketAmount = 0;
+		while(ticket == null) {
+			int inputTicketNo = cui.inputTicketNo();
+			for(Ticket tmpTicket : ticketList.getAllTicket()) {
+				if(inputTicketNo == tmpTicket.getticketNo()) {
+					ticket = tmpTicket;
+					break;
+				}
+			}
+			if(ticket == null) {
+				System.out.println("指定されたチケットは存在しません");
+				continue;
+			}
+			int inputTicketAmount = cui.inputTicketAmount();
+			if(inputTicketAmount > ticket.getStock()) {
+				ticket = null;
+				System.out.println("在庫がありません");
+			}
+			else {
+				ticketAmount = inputTicketAmount;
+			}
+			
+		}
+		boolean j = cui.confirm("予約してもよろしいですか？");
+		if(j == true) {
+			ticket.reduceStock(ticketAmount);
+			int reservationNo = (int)(Math.random()*10000);
+			for(Reservation res : reservationList.getReservationList()) {
+				if(res.getReservationNo() == reservationNo) {
+					reservationNo++;
+				}
+			}
+			Reservation  res = new Reservation(reservationNo,currentMember,ticket,ticketAmount, date);
+			reservationList.addReservation(res);
+			reservationList.getAllReservation(currentMember.getId());
+			cui.display(reservationList.getAllReservation(currentMember.getId()));
+		}
 		
 	}
-
+	
 	public void viewTicket() {
-
+		cui.display(ticketList.getAllTicket());
 	}
+
 
 	public void viewReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
@@ -65,7 +112,6 @@ public class TicketReservationSystem {
 			cui.showMessage("現在予約されているチケットはありません。\n機能選択画面へ戻ります。\n");
 			return;
 		}
-		
 		boolean reservationFindFlag = true;
 		while(reservationFindFlag) {
 			boolean con = cui.confirm("予約キャンセルを続けますか？");
@@ -82,7 +128,7 @@ public class TicketReservationSystem {
 				}
 			}
 			
-			for(Reservation res: reservationList) {
+			for(Reservation res : reservationList.getReservationList()) {
 				int resNum = res.getReservationNo();
 				
 				if(inputNumber == resNum) {
@@ -108,8 +154,10 @@ public class TicketReservationSystem {
 			currentMember = login();
 			while(currentMember != null) {
 				SystemFunction func = cui.selectFunction();
+				System.out.println(func == SystemFunction.Logout);
 				if(func == SystemFunction.Logout) {
 					logout();
+					break;
 				}
 				switch(func) {
 					case TicketReservation:

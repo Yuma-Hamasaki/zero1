@@ -16,14 +16,9 @@ public class TicketList {
 	}
 	
 	public Ticket getTicket(int ticketNo, int reservationAmount) {
-		if(reservationAmount <= 0) return null;
-		
 		for(Ticket ticket: ticketList) {
 			if(ticketNo == ticket.getticketNo()) {
-				if(ticket.getStock() < reservationAmount) {
-					return null;
-				}
-				else return ticket;
+				return ticket;
 			}
 		}
 		return null;

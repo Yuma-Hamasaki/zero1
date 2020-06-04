@@ -40,13 +40,8 @@ public class main {
 		
 		//チケット予約システムインスタンス作成
 		TicketReservationSystem TRS = new TicketReservationSystem(ticketList,memberList,reservationList);
-		TRS.currentMember = tanaka;
+		TRS.start();
 		
-		//TRS.viewTicket();
-		
-		CUI cui = new CUI();
-		
-		cui.display(ticketList.getList());
 		
 
 	}

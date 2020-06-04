@@ -18,7 +18,7 @@ public class MemberList {
 		
 		Member rtnMember = null; //	戻り値用変数
 		for(Member member : members) {
-			if(member.getId() == memberID && member.getPassword() == password) {
+			if(memberID.equals(member.getId()) && password.equals(member.getPassword())) {
 				rtnMember = member;
 				break;
 			}
