@@ -1,4 +1,4 @@
-package 設計;
+package チケット予約システム;
 
 public enum SystemFunction {
 
