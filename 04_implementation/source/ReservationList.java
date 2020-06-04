@@ -32,13 +32,14 @@ public class ReservationList {
 		}
 	}
 
-	public ArrayList<Reservation> getAllReservation(String memberID) {
-		ArrayList<Reservation>  rtnList = new ArrayList<Reservation>(); //リターン用リスト
+	public Reservation[] getAllReservation(String memberID) {
+		ArrayList<Reservation> rtnList = new ArrayList<Reservation>(); //リターン用リスト
 		for(Reservation res : reservations) {
 			if(res.getMember().getId() == memberID)
 				rtnList.add(res);
 		}
-		return rtnList;
+		Reservation[] resArray = rtnList.toArray(new Reservation[rtnList.size()]);
+		return  resArray;
 		
 	}
 
