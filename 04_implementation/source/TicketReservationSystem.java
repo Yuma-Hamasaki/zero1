@@ -17,7 +17,16 @@ public class TicketReservationSystem {
 	}
 
 	public Member login() {
-		return null;
+		Member user = null;
+		while(user != null) {
+			String ID = cui.inputID();
+			String password = cui.inputPW();
+			user = memberList.searchMember(ID,password);
+			if(user == null) {
+				cui.showMessage("ログイン情報が間違っています");
+			}
+		}
+		return user;
 	}
 
 	public void logout() {
@@ -37,7 +46,7 @@ public class TicketReservationSystem {
 	}
 
 	public void cancelReservation() {
-		reservationList.getAllReservation(currentMember.getId());
+
 	}
 
 	public void start() {
