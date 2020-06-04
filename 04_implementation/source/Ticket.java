@@ -1,6 +1,6 @@
-package 設計;
+package チケット予約システム;
 
-import 分析.Date;
+import java.util.Date;
 
 public class Ticket {
 
@@ -15,27 +15,36 @@ public class Ticket {
 	private int stock;
 
 	public Ticket(int ticketNo, String ticketName, int price, Date eventDate, int stock) {
-
+		this.ticketNo = ticketNo;
+		this.ticketName = ticketName;
+		this.price = price;
+		this.eventDate = eventDate;
+		this.stock = stock;
 	}
 
-	public void addStock(int canseledAmount) {
-
+	public void addStock(int canceledAmount) {
+		this.stock += canceledAmount;
 	}
 
 	public void reduceStock(int reservationAmount) {
-
+		this.stock -= reservationAmount;
 	}
 
 	public int getStock() {
-		return 0;
+		return this.stock;
 	}
 
 	public String toString() {
-		return null;
+		String str;
+		str = this.ticketNo + "¥n" +  this.ticketName + "¥n" + 
+				this.price + "¥n" + this.eventDate + "¥n" + 
+				this.stock;
+
+		return str;
 	}
 
 	public String getName() {
-		return null;
+		return this.ticketName;
 	}
 
 }

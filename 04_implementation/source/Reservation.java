@@ -1,6 +1,6 @@
-package 設計;
+package チケット予約システム;
 
-import 分析.Date;
+import java.util.Date;
 
 public class Reservation {
 
@@ -15,7 +15,9 @@ public class Reservation {
 	private Ticket ticket;
 
 	public Reservation(Member member, Ticket ticket, int reservationAmount) {
-
+		this.member = member;
+		this.ticket = ticket;
+		this.reservationAmount = reservationAmount;
 	}
 
 	public String changeReservationInfo() {
@@ -23,15 +25,18 @@ public class Reservation {
 	}
 
 	public int getAmount() {
-		return 0;
+		return this.reservationAmount;
 	}
 
 	public boolean checkMatchID(String memberID) {
+		if(this.member.getId() == memberID) {
+			return true;
+		}
 		return false;
 	}
 
 	public int getReservationNumber() {
-		return 0;
+		return this.reservationNo;
 	}
 
 }
