@@ -33,11 +33,65 @@ public class TicketReservationSystem {
 	}
 
 	public void viewReservation() {
-
+		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
+		
+		if(reservationList != null) {
+			cui.display(reservationList);
+		}
+		else {
+			cui.showMessage("現在予約されているチケットはありません。\n機能選択画面へ戻ります。\n");
+			return;
+		}
 	}
 
 	public void cancelReservation() {
-		reservationList.getAllReservation(currentMember.getId());
+		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
+		int inputNumber = 0;
+		int canceledAmount = 0;
+		
+		if(reservationList != null) {
+			cui.display(reservationList);
+		}
+		else {
+			cui.showMessage("現在予約されているチケットはありません。\n機能選択画面へ戻ります。\n");
+			return;
+		}
+		
+		boolean reservationFindFlag = true;
+		while(reservationFindFlag) {
+			boolean con = cui.confirm("予約キャンセルを続けますか？");
+			if(con == false) {
+				cui.showMessage("機能選択画面に戻ります。\n");
+				return;
+			}
+			
+			while(true) {
+				inputNumber = cui.inputReservationNo();
+				
+				if(inputNumber != -1) {
+					break;
+				}
+			}
+			
+			for(Reservation res: reservationList) {
+				int resNum = res.getReservationNo();
+				
+				if(inputNumber == resNum) {
+					canceledAmount = res.getAmount();
+					reservationFindFlag = false;
+					break;
+				}
+			}
+			cui.showMessage("予約番号が一致していません。再入力してください");
+		}
+		
+		if(cui.confirm("このまま予約をキャンセルしますか？")) {
+			this.ticketList.addTicketStock(inputNumber,canceledAmount);
+			this.reservationList.deleteReservation(inputNumber);
+		}
+		else {
+			return;
+		}
 	}
 
 	public void start() {
