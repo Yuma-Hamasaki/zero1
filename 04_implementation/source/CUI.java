@@ -24,6 +24,7 @@ public class CUI {
 
 	public SystemFunction selectFunction() {
 		SystemFunction systemfunction = null;
+		System.out.println("利用サービスを表示します");
 		System.out.println("0.ログアウトする");
 		System.out.println("1.チケットを予約する");
 		System.out.println("2.チケットを閲覧する");
@@ -51,36 +52,55 @@ public class CUI {
 				systemfunction = SystemFunction.Quit;
 				break;
 			default:
+				systemfunction = null;
 		}
 		return systemfunction;
 	}
 
 	public int inputReservationNo() {
-		int reservationNo = -1;
+		int reservationNo = 0;
 		System.out.print("予約番号を入力してください:");
-		reservationNo = scanner.nextInt();
+		try {
+			reservationNo = scanner.nextInt();
+		}catch(Exception e) {
+			reservationNo = -1;
+		}
 		return reservationNo;
 	}
 
 	public int inputTicketNo() {
-		int ticketNo = -1;
+		int ticketNo;
 		System.out.print("チケット番号を入力してください:");
-		ticketNo = scanner.nextInt();
+		try {
+			ticketNo = scanner.nextInt();
+		}catch(Exception e) {
+			ticketNo = -1;
+		}
 		return ticketNo;
 	}
 
 	public int inputTicketAmount() {
-		int ticketAmount = -1;
+		int ticketAmount;
 		System.out.print("チケット枚数を入力してください:");
-		ticketAmount = scanner.nextInt();
+		try {
+			ticketAmount = scanner.nextInt();
+		}catch(Exception e) {
+			ticketAmount = -1;
+		}
 		return ticketAmount;
 	}
 
 	public boolean confirm(String message) {
 		boolean confirm = false;
+		int inputConfirm = 0;
 		System.out.println(message);
 		System.out.println("1.Yes それ以外:No");
-		if(scanner.nextInt() == 1) {
+		try {
+			inputConfirm = scanner.nextInt();
+		}catch(Exception e) {
+			inputConfirm = -1;
+		}
+		if(inputConfirm == 1) {
 			confirm = true;
 		}
 		return confirm;
