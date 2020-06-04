@@ -37,7 +37,7 @@ public class TicketReservationSystem {
 	}
 
 	public void cancelReservation() {
-
+		reservationList.getAllReservation(currentMember.getId());
 	}
 
 	public void start() {
