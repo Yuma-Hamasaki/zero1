@@ -28,7 +28,7 @@ public class TicketList {
 		for(Ticket ticket: ticketList) {
 			if(ticketNo == ticket.getticketNo()) {
 				ticket.addStock(cancelAmount);
-				return;
+				break;
 			}
 		}
 	}
@@ -37,7 +37,7 @@ public class TicketList {
 		for(Ticket ticket: ticketList) {
 			if(ticketNo == ticket.getticketNo()) {
 				ticket.reduceStock(reservationAmount);
-				return;
+				break;
 			}
 		}
 	}

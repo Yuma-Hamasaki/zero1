@@ -70,10 +70,8 @@ public class TicketReservationSystem {
 		if(j == true) {
 			ticket.reduceStock(ticketAmount);
 			int reservationNo = (int)(Math.random()*10000);
-			for(Reservation res : reservationList.getReservationList()) {
-				if(res.getReservationNo() == reservationNo) {
+			while(reservationList.getReservation(reservationNo) != null) {
 					reservationNo++;
-				}
 			}
 			Reservation  res = new Reservation(reservationNo,currentMember,ticket,ticketAmount, date);
 			reservationList.addReservation(res);
@@ -128,7 +126,7 @@ public class TicketReservationSystem {
 				}
 			}
 			//ここまでは動きそう.番号一致していないが必ず出るようになってる
-			for(Reservation res : this.reservationList.getReservationList()) {
+			for(Reservation res : reservationList) {
 				int resNum = res.getReservationNo();
 				
 				if(inputNumber == resNum) {
