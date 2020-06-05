@@ -20,7 +20,10 @@ public class TicketReservationSystem {
 		this.reservationList = reservationList;
 		cui = new CUI();
 	}
-
+	/**
+	 * ログイン処理
+	 * @return ログインしたユーザーのMemberオブジェクト返す
+	 */
 	public Member login() {
 		Member user = null;
 		while(user == null) {
@@ -33,14 +36,19 @@ public class TicketReservationSystem {
 		}
 		return user;
 	}
-
+	/**
+	 * ログアウト処理
+	 */
 	public void logout() {
 		this.currentMember = null;
 	}
-
+	/**
+	 * チケットを予約するメソッド
+	 */
 	public void makeReservation() {
 		this.viewTicket();
 		Date date = new Date();
+		boolean judge = true;
 		Ticket ticket = null;
 		int ticketAmount = 0;
 		while(ticket == null) {
@@ -81,12 +89,16 @@ public class TicketReservationSystem {
 		}
 		
 	}
-	
+	/**
+	 * チケット一覧を表示するメソッド
+	 */
 	public void viewTicket() {
 		cui.display(ticketList.getAllTicket());
 	}
 
-
+	/**
+	 * ユーザーが予約しているチケットを一覧を表示するメソッド
+	 */
 	public void viewReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		
@@ -98,7 +110,9 @@ public class TicketReservationSystem {
 			return;
 		}
 	}
-
+	/**
+	 * ユーザーが予約したチケットをキャンセルするメソッド
+	 */
 	public void cancelReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		int inputNumber = 0;
@@ -154,7 +168,9 @@ public class TicketReservationSystem {
 			return;
 		}
 	}
-
+	/**
+	 * システム起動のメソッド
+	 */
 	public void start() {
 		while(true) {
 			currentMember = login();
