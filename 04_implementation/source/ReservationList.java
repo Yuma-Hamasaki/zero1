@@ -13,7 +13,12 @@ public class ReservationList {
 	public void addReservation(Reservation reservation) {
 		this.reservations.add(reservation);
 	}
-
+	
+	/**入力された予約番号と合致する予約を返す
+	 * 
+	 * @param reservationNo
+	 * @return
+	 */
 	public Reservation getReservation(int reservationNo) {
 		Reservation trnReservation = null; //リターン用変数
 		for(Reservation res : reservations) {
@@ -26,6 +31,11 @@ public class ReservationList {
 		return trnReservation;
 	}
 	
+	
+	/**予約を削除する
+	 * 
+	 * @param reservationNo
+	 */
 	public void deleteReservation(int reservationNo) {
 		System.out.println("1");
 		for(Reservation res : reservations) {
@@ -36,7 +46,12 @@ public class ReservationList {
 			}
 		}
 	}
-
+	
+	/**会員IDが合致する予約を全て配列で返す
+	 * 
+	 * @param memberID
+	 * @return
+	 */
 	public Reservation[] getAllReservation(String memberID) {
 		ArrayList<Reservation> rtnList = new ArrayList<Reservation>(); //リターン用リスト
 		for(Reservation res : reservations) {
