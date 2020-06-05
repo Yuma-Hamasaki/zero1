@@ -25,17 +25,10 @@ public class Reservation {
 		this.reservationDate = reservationDate;
 	}
 
-
 	public int getAmount() {
 		return this.reservationAmount;
 	}
-
-	public boolean checkMatchID(String memberID) {
-		if(memberID.equals(this.member.getId())) {
-			return true;
-		}
-		return false;
-	}
+	
 	
 	public Member getMember() {
 		return this.member;
@@ -44,7 +37,12 @@ public class Reservation {
 	public int getReservationNo() {
 		return this.reservationNo;
 	}
+	public Ticket getTicket() {
+		
+		return this.ticket;
+	}
 	
+	@Override
 	public String toString() {
 		String str;
 		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
@@ -57,12 +55,6 @@ public class Reservation {
 		+ "\n" + "予約枚数 : " + this.reservationAmount ;
 		
 		return str;
-	}
-
-
-	public Ticket getTicket() {
-		
-		return this.ticket;
 	}
 
 }

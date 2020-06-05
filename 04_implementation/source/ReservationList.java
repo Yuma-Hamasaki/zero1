@@ -39,7 +39,7 @@ public class ReservationList {
 	public void deleteReservation(int reservationNo) {
 		System.out.println("1");
 		for(Reservation res : reservations) {
-			System.out.println(res);
+			
 			if(res.getReservationNo() == reservationNo) {
 				reservations.remove(res);
 				break;

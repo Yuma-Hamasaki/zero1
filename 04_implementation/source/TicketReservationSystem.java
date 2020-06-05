@@ -20,10 +20,7 @@ public class TicketReservationSystem {
 		this.reservationList = reservationList;
 		cui = new CUI();
 	}
-	/**
-	 * ログイン処理
-	 * @return ログインしたユーザーのMemberオブジェクト返す
-	 */
+
 	public Member login() {
 		Member user = null;
 		while(user == null) {
@@ -36,19 +33,15 @@ public class TicketReservationSystem {
 		}
 		return user;
 	}
-	/**
-	 * ログアウト処理
-	 */
+
 	public void logout() {
+		cui.showMessage("ログアウトしました");
 		this.currentMember = null;
 	}
-	/**
-	 * チケットを予約するメソッド
-	 */
+
 	public void makeReservation() {
 		this.viewTicket();
 		Date date = new Date();
-		boolean judge = true;
 		Ticket ticket = null;
 		int ticketAmount = 0;
 		while(ticket == null) {
@@ -76,7 +69,8 @@ public class TicketReservationSystem {
 		boolean j = cui.confirm("予約してもよろしいですか？");
 		if(j == true) {
 			ticket.reduceStock(ticketAmount);
-			int reservationNo = (int)(Math.random()*10000);
+			int reservationNo = 0;
+			reservationNo = (int)(Math.random()*10000);
 			for(Reservation res : reservationList.getReservationList()) {
 				if(res.getReservationNo() == reservationNo) {
 					reservationNo++;
@@ -84,21 +78,16 @@ public class TicketReservationSystem {
 			}
 			Reservation  res = new Reservation(reservationNo,currentMember,ticket,ticketAmount, date);
 			reservationList.addReservation(res);
-			
 			cui.display(reservationList.getAllReservation(currentMember.getId()));
 		}
 		
 	}
-	/**
-	 * チケット一覧を表示するメソッド
-	 */
+	
 	public void viewTicket() {
 		cui.display(ticketList.getAllTicket());
 	}
 
-	/**
-	 * ユーザーが予約しているチケットを一覧を表示するメソッド
-	 */
+
 	public void viewReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		
@@ -110,13 +99,12 @@ public class TicketReservationSystem {
 			return;
 		}
 	}
-	/**
-	 * ユーザーが予約したチケットをキャンセルするメソッド
-	 */
+
 	public void cancelReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		int inputNumber = 0;
 		int canceledAmount = 0;
+		Reservation[] tmpres = new Reservation[1] ; 
 		
 		Ticket ticket = null;
 		
@@ -144,14 +132,17 @@ public class TicketReservationSystem {
 			}
 			
 			
+		
 			//ここまでは動きそう.番号一致していないが必ず出るようになってる
 			for(Reservation res : this.reservationList.getReservationList()) {
 				int resNum = res.getReservationNo();
+				
 				
 				if(inputNumber == resNum) {
 					canceledAmount = res.getAmount();
 					ticket = res.getTicket();
 					reservationFindFlag = false;
+					tmpres[0] = res;
 					break;
 				}
 			}
@@ -163,14 +154,15 @@ public class TicketReservationSystem {
 		if(cui.confirm("このまま予約をキャンセルしますか？")) {
 			this.ticketList.addTicketStock(ticket.getticketNo(),canceledAmount);
 			this.reservationList.deleteReservation(inputNumber);
+			cui.showMessage("以下の予約をキャンセルしました");
+			cui.display(tmpres);
 		}
 		else {
 			return;
 		}
+			
 	}
-	/**
-	 * システム起動のメソッド
-	 */
+
 	public void start() {
 		while(true) {
 			currentMember = login();
