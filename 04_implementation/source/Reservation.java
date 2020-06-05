@@ -59,4 +59,10 @@ public class Reservation {
 		return str;
 	}
 
+
+	public Ticket getTicket() {
+		
+		return this.ticket;
+	}
+
 }
