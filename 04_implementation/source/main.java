@@ -18,12 +18,12 @@ public class main {
 		memberList.addMember(yoshida);
 		
 		//イベント開催作成
-		Calendar cal1 = Calendar.getInstance();
-		cal1.set(2020, Calendar.JULY, 15);
-		Date date1 = cal1.getTime();
+		Calendar cal = Calendar.getInstance();
+		cal.set(2020, Calendar.JULY, 15);
+		Date date1 = cal.getTime();
 		
 		Calendar cal2 = Calendar.getInstance();
-		cal2.set(2020, Calendar.AUGUST, 01);
+		cal.set(2020, Calendar.AUGUST, 01);
 		Date date2 = cal2.getTime();
 		
 		//チケットインスタンス作成
