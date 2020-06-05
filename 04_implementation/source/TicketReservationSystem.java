@@ -40,6 +40,7 @@ public class TicketReservationSystem {
 	 * ログアウト処理
 	 */
 	public void logout() {
+		cui.showMessage("ログアウトしました");
 		this.currentMember = null;
 	}
 	/**
@@ -48,7 +49,6 @@ public class TicketReservationSystem {
 	public void makeReservation() {
 		this.viewTicket();
 		Date date = new Date();
-		boolean judge = true;
 		Ticket ticket = null;
 		int ticketAmount = 0;
 		while(ticket == null) {
@@ -60,13 +60,17 @@ public class TicketReservationSystem {
 				}
 			}
 			if(ticket == null) {
-				System.out.println("指定されたチケットは存在しません");
+				cui.showMessage("指定されたチケットは存在しません");
 				continue;
 			}
 			int inputTicketAmount = cui.inputTicketAmount();
-			if(inputTicketAmount > ticket.getStock()) {
+			if(inputTicketAmount <= 0) {
 				ticket = null;
-				System.out.println("在庫がありません");
+				cui.showMessage("入力値が不正です");
+			}
+			else if(inputTicketAmount > ticket.getStock()) {
+				ticket = null;
+				cui.showMessage("在庫がありません");
 			}
 			else {
 				ticketAmount = inputTicketAmount;
@@ -131,20 +135,18 @@ public class TicketReservationSystem {
 		while(reservationFindFlag) {
 			boolean con = cui.confirm("予約キャンセルを続けますか？");
 			if(con == false) {
-				cui.showMessage("機能選択画面に戻ります。\n");
 				return;
 			}
 			
 			while(true) {
 				inputNumber = cui.inputReservationNo();
 				
-				if(inputNumber != -1) {
+				if(0 < inputNumber) {
 					break;
 				}
 			}
 			
-			
-			//ここまでは動きそう.番号一致していないが必ず出るようになってる
+
 			for(Reservation res : this.reservationList.getReservationList()) {
 				int resNum = res.getReservationNo();
 				

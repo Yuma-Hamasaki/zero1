@@ -7,10 +7,7 @@ public class CUI {
 	public CUI() {
 		scanner = new Scanner(System.in);
 	}
-	/**
-	 * ユーザーにIDの入力を求めるメソッド
-	 * @return 入力されたID
-	 */
+
 	public String inputID() {
 		String ID = null;
 		System.out.println("----------------------");
@@ -18,20 +15,14 @@ public class CUI {
 		ID = scanner.nextLine();
 		return ID;
 	}
-	/**
-	 * ユーザーにパスワードの入力を求めるメソッド
-	 * @return 入力されたパスワード
-	 */
+	
 	public String inputPW() {
 		String PW = null;
 		System.out.print("パスワードを入力してください:");
 		PW = scanner.nextLine();
 		return PW;
 	}
-	/**
-	 * ユーザーに機能の選択を求めるメソッド
-	 * @return 選択された機能
-	 */
+
 	public SystemFunction selectFunction() {
 		SystemFunction systemfunction = null;
 		System.out.println("----------------------");
@@ -68,10 +59,7 @@ public class CUI {
 		}
 		return systemfunction;
 	}
-	/**
-	 * ユーザーに予約番号の入力を求めるメソッド
-	 * @return 入力された予約番号
-	 */
+
 	public int inputReservationNo() {
 		int reservationNo = 0;
 		System.out.print("予約番号を入力してください:");
@@ -82,10 +70,7 @@ public class CUI {
 		}
 		return reservationNo;
 	}
-	/**
-	 * ユーザーにチケット番号の入力を求めるメソッド	
-	 * @return 入力されたチケット番号
-	 */
+
 	public int inputTicketNo() {
 		int ticketNo;
 		System.out.print("チケット番号を入力してください:");
@@ -96,10 +81,7 @@ public class CUI {
 		}
 		return ticketNo;
 	}
-	/**
-	 * ユーザーにチケットの枚数の入力を求めるメソッド
-	 * @return チケットの枚数
-	 */
+
 	public int inputTicketAmount() {
 		int ticketAmount;
 		System.out.print("チケット枚数を入力してください:");
@@ -110,11 +92,7 @@ public class CUI {
 		}
 		return ticketAmount;
 	}
-	/**
-	 * 処理を実行しても良いか確認を取るメソッド
-	 * @param message:何の処理なのかをメッセージとして渡す
-	 * @return Yesならtrue,Noならfalse
-	 */
+
 	public boolean confirm(String message) {
 		boolean confirm = false;
 		int inputConfirm = 0;
@@ -130,30 +108,21 @@ public class CUI {
 		}
 		return confirm;
 	}
-	/**
-	 * Reservationリストを表示するメソッド
-	 * @param displayedList
-	 */
+
 	public void display(Reservation[] displayedList) {
 		for(Reservation reservation : displayedList) {
 			System.out.println("----------------------");
 			System.out.println(reservation);
 		}
 	}
-	/**
-	 * Ticketリストを表示するメソッド
-	 * @param displayedList
-	 */
+
 	public void display(Ticket[] displayedList) {
 		for(Ticket ticket : displayedList) {
 			System.out.println("----------------------");
 			System.out.println(ticket);
 		}
 	}
-	/**
-	 * 受け取ったメッセージを出力するメソッド
-	 * @param message
-	 */
+
 	public void showMessage(String message) {
 		System.out.println(message);
 	}
