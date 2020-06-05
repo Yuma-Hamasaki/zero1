@@ -10,6 +10,7 @@ public class CUI {
 
 	public String inputID() {
 		String ID = null;
+		System.out.println("----------------------");
 		System.out.print("IDを入力してください:");
 		ID = scanner.nextLine();
 		return ID;
@@ -33,7 +34,7 @@ public class CUI {
 		System.out.println("4.予約したチケットを閲覧する");
 		System.out.println("9.システムを終了する");
 		System.out.println("利用するサービスをを入力してください:");
-		System.out.println("----------------------");
+		
 		switch(scanner.nextInt()) {
 			case 0: 
 				systemfunction = SystemFunction.Logout;
