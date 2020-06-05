@@ -24,6 +24,7 @@ public class CUI {
 
 	public SystemFunction selectFunction() {
 		SystemFunction systemfunction = null;
+		System.out.println("----------------------");
 		System.out.println("利用サービスを表示します");
 		System.out.println("0.ログアウトする");
 		System.out.println("1.チケットを予約する");
@@ -31,7 +32,8 @@ public class CUI {
 		System.out.println("3.予約したチケットをキャンセルする");
 		System.out.println("4.予約したチケットを閲覧する");
 		System.out.println("9.システムを終了する");
-		System.out.print("利用するサービスをを入力してください:");
+		System.out.println("利用するサービスをを入力してください:");
+		System.out.println("----------------------");
 		switch(scanner.nextInt()) {
 			case 0: 
 				systemfunction = SystemFunction.Logout;
@@ -108,12 +110,14 @@ public class CUI {
 
 	public void display(Reservation[] displayedList) {
 		for(Reservation reservation : displayedList) {
+			System.out.println("----------------------");
 			System.out.println(reservation);
 		}
 	}
 
 	public void display(Ticket[] displayedList) {
 		for(Ticket ticket : displayedList) {
+			System.out.println("----------------------");
 			System.out.println(ticket);
 		}
 	}

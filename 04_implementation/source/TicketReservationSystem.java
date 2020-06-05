@@ -103,6 +103,8 @@ public class TicketReservationSystem {
 		int inputNumber = 0;
 		int canceledAmount = 0;
 		
+		Ticket ticket = null;
+		
 		if(reservationList != null) {
 			cui.display(reservationList);
 		}
@@ -125,12 +127,15 @@ public class TicketReservationSystem {
 					break;
 				}
 			}
+			
+			
 			//ここまでは動きそう.番号一致していないが必ず出るようになってる
 			for(Reservation res : reservationList) {
 				int resNum = res.getReservationNo();
 				
 				if(inputNumber == resNum) {
 					canceledAmount = res.getAmount();
+					ticket = res.getTicket();
 					reservationFindFlag = false;
 					break;
 				}
@@ -141,7 +146,7 @@ public class TicketReservationSystem {
 		}
 		
 		if(cui.confirm("このまま予約をキャンセルしますか？")) {
-			this.ticketList.addTicketStock(inputNumber,canceledAmount);
+			this.ticketList.addTicketStock(ticket.getticketNo(),canceledAmount);
 			this.reservationList.deleteReservation(inputNumber);
 		}
 		else {
