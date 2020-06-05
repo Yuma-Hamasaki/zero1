@@ -41,7 +41,6 @@ public class TicketReservationSystem {
 	public void makeReservation() {
 		this.viewTicket();
 		Date date = new Date();
-		boolean judge = true;
 		Ticket ticket = null;
 		int ticketAmount = 0;
 		while(ticket == null) {
