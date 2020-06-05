@@ -19,9 +19,9 @@ public class TicketList {
 		// 予約枚数が0以下の場合
 		if(reservationAmount <= 0) return null;
 		
-		for(Ticket ticket: ticketList) {
+		for(Ticket ticket: ticketList) {]
+			// 予約枚数が在庫を上回っている場合
 			if(ticketNo == ticket.getticketNo()) {
-				// 予約枚数が在庫を上回っている場合
 				if(ticket.getStock() < reservationAmount) {
 					return null;
 				}
