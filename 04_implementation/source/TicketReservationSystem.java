@@ -24,7 +24,7 @@ public class TicketReservationSystem {
 	 * ログイン処理
 	 * @return ログインしたユーザーのMemberオブジェクト返す
 	 */
-	public Member login() {
+	private Member login() {
 		Member user = null;
 		while(user == null) {
 			String ID = cui.inputID();
@@ -39,14 +39,14 @@ public class TicketReservationSystem {
 	/**
 	 * ログアウト処理
 	 */
-	public void logout() {
+	private void logout() {
 		cui.showMessage("ログアウトしました");
 		this.currentMember = null;
 	}
 	/**
 	 * チケットを予約するメソッド
 	 */
-	public void makeReservation() {
+	private void makeReservation() {
 		this.viewTicket();
 		Date date = new Date();
 		Ticket ticket = null;
@@ -96,14 +96,14 @@ public class TicketReservationSystem {
 	/**
 	 * チケット一覧を表示するメソッド
 	 */
-	public void viewTicket() {
+	private void viewTicket() {
 		cui.display(ticketList.getAllTicket());
 	}
 
 	/**
 	 * ユーザーが予約しているチケットを一覧を表示するメソッド
 	 */
-	public void viewReservation() {
+	private void viewReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		
 		if(reservationList != null) {
@@ -117,7 +117,7 @@ public class TicketReservationSystem {
 	/**
 	 * ユーザーが予約したチケットをキャンセルするメソッド
 	 */
-	public void cancelReservation() {
+	private void cancelReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		int inputNumber = 0;
 		int canceledAmount = 0;
