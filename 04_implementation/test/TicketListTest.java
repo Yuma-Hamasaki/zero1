@@ -44,6 +44,7 @@ public class TicketListTest {
 		assertThat(tArray[1], sameInstance(ticket2));
 	}
 
+	/* getTicketメソッドを削除したため、getTicketのテストをコメントアウト
 	@Test
 	public void getTicketのテスト_1() {
 		Ticket actual = ticketList.getTicket(0001, 1);
@@ -79,6 +80,8 @@ public class TicketListTest {
 		assertThat(actual, nullValue());
 	}
 
+	 */
+	
 	@Test
 	public void addTicketStockのテスト() {
 		ticketList.addTicketStock(0001, 1);
