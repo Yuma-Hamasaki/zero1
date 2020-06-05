@@ -25,6 +25,8 @@ public class Ticket {
 		this.stock = stock;
 	}
 	
+	
+	
 	public int getticketNo() {
 		return this.ticketNo;
 	}
@@ -40,10 +42,12 @@ public class Ticket {
 	public int getStock() {
 		return this.stock;
 	}
-
+	
 	public String getName() {
 		return this.ticketName;
 	}
+	
+	@Override
 	public String toString() {
 		String str;
 		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
