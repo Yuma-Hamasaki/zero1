@@ -70,12 +70,14 @@ public class TicketReservationSystem {
 		if(j == true) {
 			ticket.reduceStock(ticketAmount);
 			int reservationNo = (int)(Math.random()*10000);
-			while(reservationList.getReservation(reservationNo) != null) {
+			for(Reservation res : reservationList.getReservationList()) {
+				if(res.getReservationNo() == reservationNo) {
 					reservationNo++;
+				}
 			}
 			Reservation  res = new Reservation(reservationNo,currentMember,ticket,ticketAmount, date);
 			reservationList.addReservation(res);
-			reservationList.getAllReservation(currentMember.getId());
+			
 			cui.display(reservationList.getAllReservation(currentMember.getId()));
 		}
 		
@@ -130,7 +132,7 @@ public class TicketReservationSystem {
 			
 			
 			//ここまでは動きそう.番号一致していないが必ず出るようになってる
-			for(Reservation res : reservationList) {
+			for(Reservation res : this.reservationList.getReservationList()) {
 				int resNum = res.getReservationNo();
 				
 				if(inputNumber == resNum) {
