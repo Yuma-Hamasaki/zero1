@@ -9,8 +9,8 @@ public class main {
 		// TODO 自動生成されたメソッド・スタブ
 		
 		//会員インスタンス作成
-		Member tanaka = new Member("t-tanaka", "Sswgtnk11", "田中太郎");
-		Member yoshida = new Member("r-yoshida", "HHdawko2i2", "吉田流星");
+		Member tanaka = new Member("t-tanaka", "crsctnk11", "田中太郎");
+		Member yoshida = new Member("r-yoshida", "crscysd22", "吉田流星");
 		
 		//会員一覧インスタンス作成
 		MemberList memberList = new MemberList();
