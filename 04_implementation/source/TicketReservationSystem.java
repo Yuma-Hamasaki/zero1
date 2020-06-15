@@ -88,7 +88,7 @@ public class TicketReservationSystem {
 			}
 			Reservation  res = new Reservation(reservationNo,currentMember,ticket,ticketAmount, date);
 			reservationList.addReservation(res);
-			
+			cui.showMessage("予約が完了しました");
 			cui.display(reservationList.getAllReservation(currentMember.getId()));
 		}
 		
@@ -106,7 +106,7 @@ public class TicketReservationSystem {
 	private void viewReservation() {
 		Reservation[] reservationList = this.reservationList.getAllReservation(currentMember.getId());
 		
-		if(reservationList != null) {
+		if(reservationList.length != 0) {
 			cui.display(reservationList);
 		}
 		else {
@@ -124,7 +124,7 @@ public class TicketReservationSystem {
 		
 		Ticket ticket = null;
 		
-		if(reservationList != null) {
+		if(reservationList.length != 0) {
 			cui.display(reservationList);
 		}
 		else {
